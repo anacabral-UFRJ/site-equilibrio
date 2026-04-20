@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equilíbrio em Pontos | Plataforma Digital MTC</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Fontes do Projeto -> Inter e Merriweather -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Script de Processamento Assíncrono da Escrita (Sem banco de dados pesados) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <!-- Botão Fixo Superior Mobile Menu (Hambúrguer) -->
+    <button id="mobile-menu-btn" class="mobile-only" aria-label="Abrir Índice">☰ Índice de Módulos</button>
+
+    <div class="webbook-layout">
+        
+        <!-- Barra Lateral - Índice Gerado Dinamicamente -->
+        <aside class="sidebar" id="sidebar">
+            <button id="close-mobile-menu" class="mobile-only close-btn">✖ Fechar</button>
+            <div class="brand">
+                <h2>Equilíbrio em Pontos</h2>
+                <p>Educação MP-EGeD</p>
+            </div>
+            
+            <nav id="table-of-contents">
+                <p class="loading-toc">Carregando módulos de conhecimento...</p>
+                <!-- Os links dos Módulos nascerão aqui magicamente pelo JS -->
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button id="sos-btn" class="sos-sidebar">🆘 Ajuda Rápida (Estou em crise)</button>
+            </div>
+        </aside>
+
+        <!-- Container de Apresentação das Escritas do E-Book -->
+        <main class="content-area">
+            <div id="loading" class="loader">
+                Conectando ao texto do Livro "Equilíbrio em Pontos"...
+            </div>
+            <article id="markdown-viewer" class="markdown-body">
+                <!-- O texto vivo vai habitar este espaço livre -->
+            </article>
+        </main>
+        
+    </div>
+
+    <!-- Modal Botão SOS (Respiração 4-7-8) -->
+    <div id="sos-modal" class="hidden">
+        <div class="modal-content">
+            <h2>Respiração 4-7-8</h2>
+            <p id="breath-instruction">Prepare-se...</p>
+            <div class="breath-circle" id="breath-circle"></div>
+            <button id="close-modal">Pronto (Sair. Estou mais calmo)</button>
+        </div>
+    </div>
+
+    <!-- Variável base carregada offline (Livro) -->
+    <script src="content.js"></script>
+    <!-- Script lógico de menus e interações -->
+    <script src="scripts.js"></script>
+</body>
+</html>

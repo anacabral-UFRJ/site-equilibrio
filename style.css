@@ -1,0 +1,339 @@
+/* =======================================================
+   FOLHA DE ESTILO PRINCIPAL - WEBBOOK DE PREVENÇÃO
+   ======================================================= */
+   
+:root {
+    --verde-escuro: #166534;
+    --verde-teal: #14b8a6;
+    --laranja-alerta: #f59e0b;
+    --creme-suave: #fefdfb;
+    --linha-divisor: #e2e8f0;
+    --texto-base: #1e293b;
+    --texto-suave: #475569;
+    --branco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Anima o scroll até o módulo */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--creme-suave);
+    color: var(--texto-base);
+    line-height: 1.7;
+}
+
+/* =======================================================
+   ESTRUTURA DO GRID (APP LAYOUT COM MENU LATERAL FIXO)
+   ======================================================= */
+.webbook-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menu Lateral (Onde fica os Módulos) */
+.sidebar {
+    width: 320px;
+    background-color: var(--branco);
+    border-right: 1px solid var(--linha-divisor);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.brand {
+    padding: 30px 20px;
+    border-bottom: 3px solid var(--verde-teal);
+    background: var(--verde-escuro);
+    color: var(--branco);
+}
+
+.brand h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.brand p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+nav#table-of-contents {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+nav#table-of-contents ul {
+    list-style: none;
+}
+
+nav#table-of-contents li {
+    margin: 0;
+}
+
+nav#table-of-contents a {
+    display: block;
+    padding: 12px 25px;
+    color: var(--texto-base);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-left: 4px solid transparent;
+    transition: all 0.2s;
+}
+
+nav#table-of-contents a:hover, nav#table-of-contents a.active {
+    background-color: #f0fdf4;
+    color: var(--verde-escuro);
+    border-left-color: var(--verde-teal);
+    font-weight: 500;
+}
+
+.toc-h2 { font-weight: 600; padding-top: 10px; }
+.toc-h3 { padding-left: 45px !important; font-size: 0.85rem !important; color: var(--texto-suave) !important; }
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--linha-divisor);
+    background: #fafaf9;
+}
+
+.sos-sidebar {
+    width: 100%;
+    padding: 15px;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+    transition: all 0.2s;
+}
+
+.sos-sidebar:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+}
+
+/* =======================================================
+   ÁREA DE CONTEÚDO IMPERIAL (O Livro)
+   ======================================================= */
+.content-area {
+    margin-left: 320px; /* Largura do menu fixo */
+    padding: 60px;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* O Loader de Carregamento Rápido */
+.loader {
+    text-align: center;
+    padding: 50px;
+    font-weight: 600;
+    color: var(--verde-teal);
+}
+
+/* Renderização Inteligente das Tags convertidas pelo Markdown (Estilo Clínico Suave) */
+.markdown-body {
+    font-size: 1.1rem;
+}
+
+.markdown-body h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.8rem;
+    color: var(--verde-escuro);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--verde-teal);
+}
+
+.markdown-body h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.8rem;
+    color: var(--verde-escuro);
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.markdown-body h3 {
+    font-size: 1.3rem;
+    color: #0f172a;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.markdown-body p {
+    margin-bottom: 25px;
+    color: var(--texto-base);
+}
+
+.markdown-body ul, .markdown-body ol {
+    margin-bottom: 25px;
+    padding-left: 30px;
+}
+
+.markdown-body li {
+    margin-bottom: 10px;
+}
+
+.markdown-body strong {
+    font-weight: 600;
+    color: #000;
+}
+
+/* Tabelas e Alertas Markdown */
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.markdown-body th {
+    background: var(--verde-escuro);
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.markdown-body td {
+    padding: 15px;
+    border-bottom: 1px solid var(--linha-divisor);
+}
+
+.markdown-body blockquote {
+    background: #fffbeb;
+    border-left: 6px solid var(--laranja-alerta);
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.markdown-body hr {
+    border: 0;
+    height: 1px;
+    background: var(--linha-divisor);
+    margin: 40px 0;
+}
+
+/* =======================================================
+   S.O.S POPUP DE RESPIRAÇÃO
+   ======================================================= */
+#sos-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(22, 101, 52, 0.98);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.hidden { display: none !important; }
+
+.modal-content {
+    text-align: center;
+    color: white;
+}
+
+.modal-content h2 { margin-bottom: 10px; font-family: 'Merriweather', serif; font-size: 2rem;}
+.modal-content p { font-size: 1.3rem; margin-bottom: 50px; min-height: 40px; }
+
+.breath-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: var(--verde-teal);
+    margin: 0 auto 60px;
+    transition: transform linear;
+    box-shadow: 0 0 50px rgba(20, 184, 166, 0.5);
+}
+
+#close-modal {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#close-modal:hover {
+    background: white;
+    color: var(--verde-escuro);
+}
+
+/* =======================================================
+   CONTROLE MOBILE (Responsivo para Celulares Pequenos)
+   ======================================================= */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        transform: translateX(-100%); /* Esconde fora da tela inicialmente */
+        width: 85%;
+        max-width: 400px;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 10px 0 25px rgba(0,0,0,0.2);
+    }
+    
+    .content-area {
+        margin-left: 0;
+        padding: 80px 20px 40px;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    #mobile-menu-btn {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--verde-escuro);
+        color: white;
+        text-align: left;
+        padding: 15px 20px;
+        border: none;
+        font-size: 1.1rem;
+        z-index: 50;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        height: 55px;
+    }
+    
+    .close-btn {
+        background: #f1f5f9;
+        border: none;
+        padding: 15px;
+        text-align: right;
+        color: var(--texto-suave);
+        font-weight: bold;
+    }
+    
+    .markdown-body h1 { font-size: 2.2rem; }
+}
